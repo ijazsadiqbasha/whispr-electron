@@ -1,0 +1,291 @@
+/* Add this at the top of the file */
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Add this after the global rule */
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+  
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+  
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+  
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+  
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+  
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+  
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+  
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+  
+    --border:220 13% 91%;
+    --input:220 13% 91%;
+    --ring:262.1 83.3% 57.8%;
+    --radius: 0.5rem;
+  }
+   
+  .dark {
+    --background:224 71.4% 4.1%;
+    --foreground:210 20% 98%;
+  
+    --card:224 71.4% 4.1%;
+    --card-foreground:210 20% 98%;
+  
+    --popover:224 71.4% 4.1%;
+    --popover-foreground:210 20% 98%;
+  
+    --primary:263.4 70% 50.4%;
+    --primary-foreground:210 20% 98%;
+  
+    --secondary:215 27.9% 16.9%;
+    --secondary-foreground:210 20% 98%;
+  
+    --muted:215 27.9% 16.9%;
+    --muted-foreground:217.9 10.6% 64.9%;
+  
+    --accent:215 27.9% 16.9%;
+    --accent-foreground:210 20% 98%;
+  
+    --destructive:0 62.8% 30.6%;
+    --destructive-foreground:210 20% 98%;
+  
+    --border:215 27.9% 16.9%;
+    --input:215 27.9% 16.9%;
+    --ring:263.4 70% 50.4%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  background-color: #FBFBFD;
+}
+body.dark {
+  background-color: #030711;
+}
+
+.left-placholder::before {
+  content: attr(placeholder);
+  position: relative;
+  left: 20px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s linear;
+}
+
+.fade-enter, .fade-leave-to {
+  transition: opacity 0.2s linear;
+  opacity: 0;
+}
+
+input:active, input:focus, input:blur {
+  outline: none;
+}
+.sidebar, .dashboard-main, nav {
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow-x: hidden;
+}
+.custom_scroll {
+  overflow-y: auto;
+}
+
+.custom_scroll::-webkit-scrollbar {
+  position: absolute;
+  width: 6px;
+}
+.custom_scroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom_scroll::-webkit-scrollbar-thumb {
+  background: #999999; 
+  border-radius: 10px;
+}
+
+.sidebar.is-active {
+  left: 280px;
+}
+
+.titlebar {
+  /* Electron-specific property for creating draggable regions */
+  -webkit-app-region: drag;
+  height: 30px; /* Adjust as needed */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body.overlay {
+  background: transparent !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Add this new rule */
+#app.overlay {
+  background: transparent !important;
+  overflow: hidden !important;
+  border-radius: 16px;
+}
+
+.audio-wave {
+  display: flex;
+  align-items: center;
+  height: 75%;
+  width: 100%;
+  max-width: 1024px;
+  position: relative;
+}
+
+.audio-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,0) 70%,
+    rgba(0,0,0,0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wave-bar {
+  height: 75%;
+  flex: 1;
+  margin: 0 1px;
+  border-radius: var(--radius);
+  transition: transform 0.1s ease;
+  transform-origin: center;
+  position: relative;
+  z-index: 0;
+}
+
+.volume-0 { transform: scaleY(0.1); }
+.volume-1 { transform: scaleY(0.2); }
+.volume-2 { transform: scaleY(0.3); }
+.volume-3 { transform: scaleY(0.4); }
+.volume-4 { transform: scaleY(0.5); }
+.volume-5 { transform: scaleY(0.6); }
+.volume-6 { transform: scaleY(0.7); }
+.volume-7 { transform: scaleY(0.8); }
+.volume-8 { transform: scaleY(0.9); }
+.volume-9, .volume-10 { transform: scaleY(1); }
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+
+}
+
+.wave-bar:nth-child(2n) {
+  animation-delay: 0.1s;
+}
+
+.wave-bar:nth-child(3n) {
+  animation-delay: 0.2s;
+}
+
+.wave-bar:nth-child(4n) {
+  animation-delay: 0.3s;
+}
+.wave-bar:nth-child(5n) {
+  animation-delay: 0.4s;
+}
+
+/* Add this new CSS for the loading spinner */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-dots div {
+  width: 8px;
+  height: 8px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-dots div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loading-dots div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

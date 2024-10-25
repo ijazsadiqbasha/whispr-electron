@@ -1,0 +1,7 @@
+{
+  "extends": ["web-recommended"],
+  "hints": {
+    "html-checker": "off",
+    "compat-api/css": ["off"]
+  }
+}

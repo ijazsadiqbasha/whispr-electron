@@ -1,0 +1,89 @@
+{
+  "name": "whispr-electron",
+  "productName": "Whispr",
+  "version": "3.0.0",
+  "description": "Whispr",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsc && npx vite build && electron .",
+    "build:win": "npx tsc && npx vite build && npm run copy-main && electron-builder --win --publish never",
+    "copy-main": "copyfiles -u 1 \"src/**/*.js\" dist"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ijazsadiqbasha",
+    "email": "ijazsadiqbasha@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@shadcn/ui": "^0.0.4",
+    "@types/electron-store": "^1.3.1",
+    "@types/node": "^22.7.9",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/semver": "^7.5.8",
+    "@vitejs/plugin-react": "^4.3.3",
+    "copyfiles": "^2.4.1",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.2",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.3.9",
+    "lucide-react": "^0.453.0",
+    "node-global-key-listener": "^0.3.0",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss": "^3.4.14",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "src/assets/microphone.png",
+        "to": "microphone.png"
+      },
+      {
+        "from": "bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "appId": "com.ijazio.whisper",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ijazsadiqbasha",
+        "repo": "whispr-electron"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/assets/microphone.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ]
+  }
+}

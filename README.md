@@ -42,17 +42,6 @@ Whispr is a powerful and user-friendly speech-to-text transcription application 
 4. Release the shortcut or toggle off to end recording
 5. Your transcription will be automatically processed and (optionally) pasted or copied
 
-## Configuration
-
-Whispr offers various settings to customize your experience:
-   ```
-   typescript:src/pages/Settings.tsx
-   startLine: 131
-   endLine: 219
-   ```
-
-Access these settings by opening the Whispr application window.
-
 ## Development
 
 To set up the development environment:

@@ -17,6 +17,10 @@
   <a href="#license">License</a>
 </p>
 
+<p align="center">
+  <img src="src/assets/Animation.gif" alt="Whispr Demo" width="600">
+</p>
+
 Whispr is a powerful and user-friendly speech-to-text transcription application built with Electron. It offers seamless audio capture and real-time transcription, making it an essential tool for professionals, students, and anyone who needs quick and accurate text from spoken words.
 
 ## Key Features
